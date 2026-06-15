@@ -182,7 +182,7 @@ int main(void)
   mtx01Handle = osMutexNew(&mtx01_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
+	/* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
   /* Create the semaphores(s) */
@@ -193,7 +193,7 @@ int main(void)
   sem02Handle = osSemaphoreNew(1, 1, &sem02_attributes);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
+	/* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* Create the timer(s) */
@@ -204,7 +204,7 @@ int main(void)
   tim02Handle = osTimerNew(tim02Callback, osTimerPeriodic, NULL, &tim02_attributes);
 
   /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
+	/* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
   /* Create the queue(s) */
@@ -215,7 +215,7 @@ int main(void)
   que02Handle = osMessageQueueNew (32, sizeof(uint32_t), &que02_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
+	/* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -229,14 +229,14 @@ int main(void)
   task03Handle = osThreadNew(task03start, NULL, &task03_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+	/* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
   /* creation of Evt01 */
   Evt01Handle = osEventFlagsNew(&Evt01_attributes);
 
   /* USER CODE BEGIN RTOS_EVENTS */
-  /* add events, ... */
+	/* add events, ... */
   /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
@@ -246,12 +246,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+	while (1) {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+	}
   /* USER CODE END 3 */
 }
 
@@ -540,11 +539,10 @@ void StartDefaultTask(void *argument)
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 5 */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	/* Infinite loop */
+	for (;;) {
+		osDelay(1);
+	}
   /* USER CODE END 5 */
 }
 
@@ -558,12 +556,11 @@ void StartDefaultTask(void *argument)
 void taskHeartbeatStart(void *argument)
 {
   /* USER CODE BEGIN taskHeartbeatStart */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  	ledBlink(20);
-  }
+	/* Infinite loop */
+	for (;;) {
+		osDelay(500);
+		ledBlink(2);
+	}
   /* USER CODE END taskHeartbeatStart */
 }
 
@@ -577,11 +574,10 @@ void taskHeartbeatStart(void *argument)
 void task03start(void *argument)
 {
   /* USER CODE BEGIN task03start */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	/* Infinite loop */
+	for (;;) {
+		osDelay(1);
+	}
   /* USER CODE END task03start */
 }
 
@@ -630,11 +626,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
-  while (1)
-  {
-  }
+	/* User can add his own implementation to report the HAL error return state */
+	__disable_irq();
+	while (1) {
+	}
   /* USER CODE END Error_Handler_Debug */
 }
 #ifdef USE_FULL_ASSERT
@@ -648,8 +643,8 @@ void Error_Handler(void)
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+	/* User can add his own implementation to report the file name and line number,
+		ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */

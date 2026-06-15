@@ -82,6 +82,7 @@ void Error_Handler(void);
 #define BOARD_BOOT1_10k_pull_down_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
+#define USE_OS_RTOS
 
 /* USER CODE END Private defines */
 

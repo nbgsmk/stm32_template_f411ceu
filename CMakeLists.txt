@@ -7,19 +7,23 @@ cmake_minimum_required(VERSION 3.22)
 # User is free to modify the file as much as necessary
 #
 
+###########
+## OVO OVO
+###########
+# Force -O0 optimization for the entire project, overriding subdirectories. Ensure maximum debug info is generated
+add_compile_options("$<$<CONFIG:Debug>:-O0>")
+add_compile_options("$<$<CONFIG:Debug>:-g3>")
+###########
+## OVO OVO
+###########
+#set(INCLUDE_Z "/home/mcu/dev_stm32/_IncZ")
+set(INCLUDE_Z ${CMAKE_CURRENT_SOURCE_DIR}/../../_IncZ)
+
+
 # Setup compiler settings
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
-
-###########
-## OVO OVO
-###########
-set(EXTERNAL_DIR "/home/mcu/dev_stm32/_IncZ")
-file(GLOB EXTERNAL_FILES CONFIGURE_DEPENDS
-     "${EXTERNAL_DIR}/*.c"
-     "${EXTERNAL_DIR}/*.h"
-)
 
 # Define the build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -37,14 +41,10 @@ project(${CMAKE_PROJECT_NAME})
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
 # Enable CMake support for ASM and C languages
-enable_language(C ASM)
+enable_language(C CXX ASM)
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME}
-        ###########
-        ## OVO OVO
-        ###########
-        ${EXTERNAL_FILES}
 )
 
 # Add STM32CubeMX generated sources
@@ -58,6 +58,10 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
+        ###########
+        ## OVO OVO
+        ###########
+        "${INCLUDE_Z}/BoardLed.c"
 )
 
 # Add include paths
@@ -66,7 +70,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
         ###########
         ## OVO OVO
         ###########
-        "${EXTERNAL_DIR}"
+        "${INCLUDE_Z}"
 )
 
 # Add project symbols (macros)
